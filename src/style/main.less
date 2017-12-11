@@ -1,0 +1,207 @@
+@import "./variable";
+
+
+html, body, #app {
+  width: 100%;
+  height: 100%;
+  // height: calc(~ "100% - 25px");
+}
+
+html {
+  // margin-top: 20px;
+}
+
+#app {
+  background: white;
+  overflow: auto;
+}
+
+/**
+重置mintUI样式
+ */
+// table选中颜色
+.is-selected {
+  color: red !important;
+}
+
+// header定位样式
+.headerTitle {
+  font-size: 17px;
+  display: flex !important;
+  right: 0 !important;
+  //top: 20px !important;
+  top: 19px;
+  left: 0 !important;
+  height: 44px;
+  position: fixed !important;
+  z-index: 1000 !important;
+}
+
+.headerTop {
+  position: fixed !important;
+  z-index: 1000 !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+}
+
+.container {
+  margin-top: 64px;
+  margin-bottom: 55px;
+}
+
+// 弹窗满屏样式
+.customDialog {
+  .mint-popup-bottom {
+    width: 100% !important;
+  }
+}
+
+/**
+ * 重设弹窗样式
+ */
+.mint-msgbox {
+  border-radius: 10px;
+  // 标题
+  .mint-msgbox-header {
+    padding: 20px 0 0;
+    .mint-msgbox-title {
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+  // 内容
+  .mint-msgbox-content {
+    // 内容文字
+    .mint-msgbox-message {
+      text-align: left;
+      color: black;
+      font-size: 20px;
+    }
+    // 输入框
+    .mint-msgbox-input {
+      display: flex;
+      padding-top: 0;
+      input {
+        height: 30px;
+        border-radius: 0;
+        font-size: 16px;
+      }
+      input::-webkit-input-placeholder { /* WebKit browsers */
+        color: @placeholder;
+      }
+      input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: @placeholder;
+      }
+      input::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: @placeholder;
+      }
+      input:-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: @placeholder;
+      }
+    }
+  }
+
+  // 底部按钮
+  .mint-msgbox-btns {
+    height: 50px;
+    .mint-msgbox-btn {
+      font-size: 16px;
+    }
+
+    // 取消按钮
+    .mint-msgbox-cancel {
+
+    }
+
+    // 确认按钮
+    .mint-msgbox-confirm {
+      color: @mainColor;
+    }
+  }
+}
+
+
+/**
+ * 重设返回按钮大小
+ */
+.mintui{
+  font-size: 22px;
+}
+
+
+/**
+ * 通用样式
+ */
+.mar-top_1{
+  margin-top: 10px;
+}
+
+.mar-top_2{
+  margin-top: 16px;
+}
+
+.mar-top_2_0{
+  margin-top: 20px;
+}
+
+.mar-top_4{
+  margin-top: 40px;
+}
+
+
+.fon-size_25{
+  font-size: 25px;
+}
+
+.fon-size_20{
+  font-size: 20px;
+}
+
+.fon-size_12{
+  font-size: 12px;
+}
+
+.color-main{
+  color: @mainColor;
+}
+
+.color-white{
+  color: #ffffff;
+}
+
+.color-main_bg{
+  background-color: @mainColor;
+}
+
+
+
+/**
+ * 验证码弹窗
+ */
+.mint-popup{
+  border-radius: 7px;
+  .code-mask{
+    width: 200px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .code-mask-top{
+
+    }
+    .code-mask-middle{
+      border: 1px solid @borderColor;
+    }
+    .code-mask-footer{
+      border: 1px solid @borderColor;
+      width: 100%;
+      input{
+        width: 95%;
+      }
+    }
+  }
+}
+
