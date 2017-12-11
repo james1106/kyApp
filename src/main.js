@@ -15,7 +15,9 @@ import {
   Popup,
   Picker,
   Field,
-  Switch
+  Switch,
+  TabContainer,
+  TabContainerItem
 } from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import 'font-awesome/css/font-awesome.css'
@@ -36,6 +38,8 @@ Vue.component(Popup.name, Popup);
 Vue.component(Picker.name, Picker);
 Vue.component(Field.name, Field);
 Vue.component(Switch.name, Switch);
+Vue.component(TabContainer.name, TabContainer);
+Vue.component(TabContainerItem.name, TabContainerItem);
 
 Vue.config.productionTip = false;
 

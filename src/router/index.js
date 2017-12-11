@@ -27,9 +27,27 @@ export default new Router({
     {
       path: '/purseStrings/order',
       name: 'order',
-      meta: { isShowTabbar: true },
+      meta: { isShowTabbar: false },
       component: function (resolve) {
         require(['../components/purseStrings/order/Index.vue'], resolve)
+      }
+    },
+    // 食堂订单详情
+    {
+      path: '/purseStrings/order/canteenDetails',
+      name: 'canteenDetails',
+      meta: { isShowTabbar: false },
+      component: function (resolve) {
+        require(['../components/purseStrings/order/canteenDetails/Index.vue'], resolve)
+      }
+    },
+    // 外卖订单详情
+    {
+      path: '/purseStrings/order/takeOutDetails',
+      name: 'takeOutDetails',
+      meta: { isShowTabbar: false },
+      component: function (resolve) {
+        require(['../components/purseStrings/order/takeOutDetails/Index.vue'], resolve)
       }
     },
     // 对账
@@ -157,6 +175,15 @@ export default new Router({
       meta: { isShowTabbar: false },
       component: function (resolve) {
         require(['../components/login/Index.vue'], resolve)
+      }
+    },
+    /********************* 消息 ************************/
+    {
+      path: '/purseStrings/message',
+      name: 'message',
+      meta: { isShowTabbar: false },
+      component: function (resolve) {
+        require(['../components/message/Index.vue'], resolve)
       }
     },
   ]
