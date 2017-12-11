@@ -1,24 +1,39 @@
 <template>
-  <div class="container">
-    <div class="test">
+  <div class="container color-gain_bg mine">
+    <div class="scan-title">
       <mt-header class="headerTop transparent"></mt-header>
       <mt-header title="我的" class="headerTitle transparent"></mt-header>
       <div class="content">
         <div class="top">
           <img src="../../assets/logo.png" alt="" style="width: 70px;height: 70px;">
-          <span>收银员</span>
-
-          <div class="middle">小霸王</div>
-          <div class="bottom">131-3866-3037</div>
+          <div class="top-right color-white">
+            <div class="middle">
+              小霸王
+              <mt-badge type="warning" size="small">收营员</mt-badge>
+            </div>
+            <div class="bottom fon-size_14">131****3037</div>
+          </div>
         </div>
-
       </div>
     </div>
-    <mt-cell title="所属门店" value="珍云的面馆"></mt-cell>
-    <mt-cell title="营业信息" is-link to="/mine/businessMsg"></mt-cell>
-    <mt-cell title="消息设置" is-link to="/mine/messageSet"></mt-cell>
-    <mt-cell title="标题文字" value="020-382557987"></mt-cell>
-    <mt-cell title="关于" is-link to="/mine/about"></mt-cell>
+
+
+    <mt-cell title="所属门店" value="珍云的面馆">
+      <img src="../../assets/img/mine/mine-store.png" slot="icon" alt="" width="24" height="24">
+    </mt-cell>
+    <mt-cell title="消息设置" is-link to="/mine/messageSet" class="mar-top_2">
+      <img src="../../assets/img/mine/mine-set.png" slot="icon" alt="" width="24" height="24">
+    </mt-cell>
+    <mt-cell title="修改密码" is-link>
+      <img src="../../assets/img/mine/mine-password.png" slot="icon" alt="" width="24" height="24">
+    </mt-cell>
+    <mt-cell title="客服热线" value="020-382557987">
+      <img src="../../assets/img/mine/mine-call.png" slot="icon" alt="" width="24" height="24">
+    </mt-cell>
+    <mt-cell title="关于" is-link to="/mine/about" class="mar-top_2">
+      <img src="../../assets/img/mine/mine-about.png" slot="icon" alt="" width="24" height="24">
+    </mt-cell>
+
 
   </div>
 </template>
@@ -44,18 +59,17 @@
       }
     }
   }
+
 </script>
 <style lang="less" scoped>
   .container{
     margin-top: 0;
+    margin-bottom: 55px;
+    height: calc(~'100% - 55px');
   }
 
-  .test{
-    background: url("../../assets/logo.png") ;
-  }
-
-  .transparent{
-    background-color: transparent;
+  .scan-title{
+    background: url("../../assets/img/mine/mine-title-login.jpg") no-repeat center center / 100% 100%;
   }
 
   .content{
@@ -63,24 +77,26 @@
     flex-direction: row;
     align-items: center;
     padding: 10px 0 10px 0;
-    padding-top: 60px;
+    padding-top: 74px;
     .top{
       position: relative;
+      padding: 0 20px;
       display: flex;
       margin-bottom: 5px;
       margin-top: 5px;
+      .top-right{
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /*align-items: center;*/
+      }
       img{
         border-radius: 50px;
         background-color: red;
       }
       span{
-        position: absolute;
-        bottom: 3px;
-        font-size: 12px;
-        width: 40px;
-        background-color: gainsboro;
-        text-align: center;
-        border-radius: 4px;
+
       }
     }
     .middle{

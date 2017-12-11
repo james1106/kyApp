@@ -19,9 +19,9 @@ html {
 /**
 重置mintUI样式
  */
-// table选中颜色
+// tabbar选中颜色
 .is-selected {
-  color: red !important;
+  color: @mainColor !important;
 }
 
 // header定位样式
@@ -122,14 +122,12 @@ html {
   }
 }
 
-
 /**
  * 重设返回按钮大小
  */
 .mintui{
   font-size: 22px;
 }
-
 
 /**
  * 通用样式
@@ -150,13 +148,37 @@ html {
   margin-top: 40px;
 }
 
+.mar-top_10{
+  margin-top: 100px;
+}
+
+
+.mar-bottom_3{
+  margin-bottom: 30px;
+}
+
+.mar-left_0_5{
+  margin-left: 5px;
+}
+
+  .pad-top_4{
+  padding-top: 40px;
+}
 
 .fon-size_25{
   font-size: 25px;
 }
 
+.fon-size_24{
+  font-size: 24px;
+}
+
 .fon-size_20{
   font-size: 20px;
+}
+
+.fon-size_14{
+  font-size: 14px;
 }
 
 .fon-size_12{
@@ -171,11 +193,21 @@ html {
   color: #ffffff;
 }
 
-.color-main_bg{
-  background-color: @mainColor;
+.color-chocolate{
+  color: rgb(163,105,66);
 }
 
+.color-tip{
+  color: #757575;
+}
 
+.color-main_bg{
+  background-color: #Fc4a01 !important;
+}
+
+.color-gain_bg{
+  background-color: #f5f5f5;
+}
 
 /**
  * 验证码弹窗
@@ -205,3 +237,25 @@ html {
   }
 }
 
+
+/**
+ * 重置switch样式
+ */
+.mint-switch-core::before {
+  width: 50px !important;
+  height: 30px !important;
+  background-color: #757575 !important;
+}
+
+.mint-switch-input:checked + .mint-switch-core{
+  border-color: @mainColor !important;
+  background-color: @mainColor !important;
+}
+
+
+/**
+ * 首页 mine 透明背景
+ */
+.transparent{
+  background-color: transparent !important;
+}

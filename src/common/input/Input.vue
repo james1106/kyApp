@@ -6,7 +6,7 @@
       <input :placeholder="placeholder ? placeholder : ''" :type="type ? type : 'text'" class="mint-field-core" v-model="value" :class="{'border' : types != 'number'}">
       <div class="mint-field-clear">
         <i class="mintui mintui-field-error" @click="clear" v-show="value.length != 0"></i>
-        <i v-if="types == 'password'" class="mintui mintui-field-success" @click="showPw"></i>
+        <span v-if="types == 'password'" class="icon-eyes color-tip fon-size_24 mar-left_0_5" @click="showPw"></span>
       </div>
       <span class="mint-field-state is-default"><i class="mintui mintui-field-default"></i></span>
       <div class="mint-field-other"></div>
@@ -104,6 +104,9 @@
     .mint-field-clear{
       color: black;
       margin-right: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 </style>

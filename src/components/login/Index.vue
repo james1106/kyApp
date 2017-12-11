@@ -5,14 +5,20 @@
       <mt-header title="商家版登录" class="headerTitle" style="color: #F02200;background-color: transparent;"></mt-header>
     </div>
 
+    <div class="logo mar-top_10 mar-bottom_3" >
+      <div>
+        <img src="../../assets/img/login/logo.png" alt="" style="width: 100%;">
+      </div>
+    </div>
+
     <div class="content">
+
       <ky-input
         @kyChange="phoneGet"
         :width="'60%'"
         :types="'number'"
         class="mar-top_2"
         :placeholder="'请输入手机号'"></ky-input>
-
 
       <ky-input
         @kyChange="passwordGet"
@@ -63,7 +69,7 @@
       // 登录按钮
       login(){
         if (this.phone == 1 && this.password == '1'){
-          sessionStorage.setItem('user', true);
+          localStorage.setItem('user', true);
           Toast('登录成功');
           this.$router.push('/purseStrings')
         }else {
@@ -76,8 +82,7 @@
       kyButton
     },
     mounted(){
-      let user = sessionStorage.getItem('user');
-      alert(user);
+      let user = localStorage.getItem('user');
       if (user){
          this.$router.push('/purseStrings');
       }
@@ -89,6 +94,15 @@
 
   .content {
     margin-top: 20px;
+  }
+
+  .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div{
+      width: 40%;
+    }
   }
 
   .footer {

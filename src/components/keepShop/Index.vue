@@ -1,10 +1,12 @@
 <template>
   <div class="container" id="keepShop">
-    <mt-header title="管店" class="headerTitle">
+    <mt-header title="" class="headerTop color-main_bg"></mt-header>
+    <mt-header title="标题过长会隐藏后面的内容啊哈哈哈" class="headerTitle color-main_bg">
       <router-link to="/" slot="right">
-        <mt-button>添加</mt-button>
+        <mt-button icon="more"></mt-button>
       </router-link>
     </mt-header>
+    <h1>管店铺</h1>
     <div class="searchTop">
       <div @click="openPopup(1)">1</div>
       <div @click="openPopup(2)">2</div>
