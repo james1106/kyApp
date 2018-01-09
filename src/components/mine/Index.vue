@@ -2,7 +2,11 @@
   <div class="container color-gain_bg mine">
     <div class="scan-title">
       <mt-header class="headerTop transparent"></mt-header>
-      <mt-header title="我的" class="headerTitle transparent"></mt-header>
+      <mt-header title="我的" class="headerTitle transparent">
+        <router-link to="/mine/messageSet" slot="right">
+          <img src="../../assets/img/mine/mine-right-set.png" alt="" style="width: 25px;height: 25px;">
+        </router-link>
+      </mt-header>
       <div class="content">
         <div class="top">
           <img src="../../assets/logo.png" alt="" style="width: 70px;height: 70px;">
@@ -21,10 +25,10 @@
     <mt-cell title="所属门店" value="珍云的面馆">
       <img src="../../assets/img/mine/mine-store.png" slot="icon" alt="" width="24" height="24">
     </mt-cell>
-    <mt-cell title="消息设置" is-link to="/mine/messageSet" class="mar-top_2">
-      <img src="../../assets/img/mine/mine-set.png" slot="icon" alt="" width="24" height="24">
-    </mt-cell>
-    <mt-cell title="修改密码" is-link>
+    <!--<mt-cell title="消息设置" is-link to="/mine/messageSet">-->
+      <!--<img src="../../assets/img/mine/mine-set.png" slot="icon" alt="" width="24" height="24">-->
+    <!--</mt-cell>-->
+    <mt-cell title="修改密码" is-link to="/mine/setPassword" class="mar-top_2">
       <img src="../../assets/img/mine/mine-password.png" slot="icon" alt="" width="24" height="24">
     </mt-cell>
     <mt-cell title="客服热线" value="020-382557987">

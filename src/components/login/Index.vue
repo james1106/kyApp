@@ -5,14 +5,13 @@
       <mt-header title="商家版登录" class="headerTitle" style="color: #F02200;background-color: transparent;"></mt-header>
     </div>
 
-    <div class="logo mar-top_10 mar-bottom_3" >
+    <div class="logo mar-top_10 mar-bottom_3">
       <div>
         <img src="../../assets/img/login/logo.png" alt="" style="width: 100%;">
       </div>
     </div>
 
     <div class="content">
-
       <ky-input
         @kyChange="phoneGet"
         :width="'60%'"
@@ -27,14 +26,11 @@
         class="mar-top_2"
         :placeholder="'请输入密码'"></ky-input>
 
-
       <div class="footer mar-top_2">
         <ky-button :width="'80%'" @click.native="login">登录</ky-button>
         <div class="footnote mar-top_2">
-
           <div @click="changeRouter('findPassword')">忘记密码</div>
           <div @click="changeRouter('activateEm')">激活员工</div>
-
         </div>
       </div>
 
@@ -47,33 +43,63 @@
 <script>
   import kyInput from '@/common/input/Input.vue'
   import kyButton from '@/common/button/Button.vue'
-  import { Toast } from 'mint-ui';
+  import {Toast} from 'mint-ui';
+  import {mapGetters, mapActions} from 'vuex'
+  import {Login} from '@/api/index.js'
+  import {Indicator} from 'mint-ui';
+
+
 
   export default {
     data() {
       return {
-        phone: Number,
-        password: String
+        phone: '',
+        password: ''
       }
     },
     methods: {
+      ...mapActions([
+        'tokenGet'
+      ]),
       phoneGet(val) {
         this.phone = val;
       },
-      passwordGet(val){
+      passwordGet(val) {
         this.password = val;
       },
-      changeRouter(routes){
+      changeRouter(routes) {
         this.$router.push('/login/' + routes);
       },
       // 登录按钮
-      login(){
-        if (this.phone == 1 && this.password == '1'){
-          localStorage.setItem('user', true);
-          Toast('登录成功');
-          this.$router.push('/purseStrings')
-        }else {
-          Toast('账号或密码错误');
+      login() {
+        if (!this.phone || !this.password) {
+          Toast('请输入账号与密码');
+        } else {
+          Indicator.open();
+          var params = {
+            appid: localStorage.getItem('appid'),
+            timestamp: Date.parse(new Date()) / 1000,
+            userName: this.phone,
+            passWord: this.password
+          };
+
+          params = this.formatParams(params);
+
+          console.log(params);
+          Login(params).then((res) => {
+            Indicator.close();
+            if (res.errcode == 0) {
+              localStorage.setItem('version', this.version);
+              localStorage.setItem('isCashier', res.data.isCashier);
+              localStorage.setItem('token', res.data.token);
+              localStorage.setItem('isLogin', 'true');
+
+              Toast('登录成功');
+              this.$router.push('/purseStrings')
+            } else {
+              Toast(res.errmsg);
+            }
+          });
         }
       }
     },
@@ -81,12 +107,15 @@
       kyInput,
       kyButton
     },
-    mounted(){
-      let user = localStorage.getItem('user');
-      if (user){
-         this.$router.push('/purseStrings');
+    mounted() {
+      let isLogin = localStorage.getItem('isLogin');
+      if (isLogin == 'true') {
+        this.$router.push('/purseStrings');
       }
-    }
+    },
+    computed: mapGetters([
+      'version', 'getAppid', 'getsValue'
+    ])
   }
 </script>
 <style scoped lang="less">
@@ -96,11 +125,11 @@
     margin-top: 20px;
   }
 
-  .logo{
+  .logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    div{
+    div {
       width: 40%;
     }
   }
@@ -123,11 +152,10 @@
   }
 
   .footernote {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 200px;
     color: @mainColor;
   }
 </style>

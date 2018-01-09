@@ -23,10 +23,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
+.icon-tip:before {
+  content: "\e90b";
+  color: #cbcbcb;
+  font-size: 24px;
+  line-height: 48px;
+  margin-left: 8px;
+}
 .icon-home-bell:before {
   content: "\e90a";
   color: #fff;
+  font-size: 20px;
 }
 .icon-eyes:before {
   content: "\e900";

@@ -18,7 +18,7 @@ export default new Router({
     {
       path: '/purseStrings/collectionMoney',
       name: 'collectionMoney',
-      meta: { isShowTabbar: true },
+      meta: {isShowTabbar: false},
       component: function (resolve) {
         require(['../components/purseStrings/collectionMoney/Index.vue'], resolve)
       }
@@ -27,10 +27,28 @@ export default new Router({
     {
       path: '/purseStrings/order',
       name: 'order',
-      meta: { isShowTabbar: true },
+      meta: {isShowTabbar: false},
       component: function (resolve) {
         require(['../components/purseStrings/order/Index.vue'], resolve)
-      }
+      },
+      children: [
+        {
+          path: '/purseStrings/order/takeOut',
+          name: 'takeOut',
+          meta: {isShowTabbar: false},
+          component: function (resolve) {
+            require(['../components/purseStrings/order/takeOut.vue'], resolve)
+          },
+        },
+        {
+          path: '/purseStrings/order/eatIn',
+          name: 'eatIn',
+          meta: {isShowTabbar: false},
+          component: function (resolve) {
+            require(['../components/purseStrings/order/eatIn.vue'], resolve)
+          },
+        }
+      ]
     },
     // 对账
     {
@@ -45,7 +63,7 @@ export default new Router({
     {
       path: '/purseStrings/reconciliation',
       name: 'reconciliation',
-      meta: { isShowTabbar: true },
+      meta: {isShowTabbar: false},
       component: function (resolve) {
         require(['../components/purseStrings/reconciliation/Index.vue'], resolve)
       }
@@ -88,18 +106,35 @@ export default new Router({
     // 消息设置
     {
       path: '/mine/messageSet',
-      meta: { isShowTabbar: true },
+      meta: {isShowTabbar: false},
       component: function (resolve) {
         require(['../components/mine/messageSet/Index.vue'], resolve)
+      },
+    },
+    // 接收时段
+    {
+      path: '/mine/messageSet/receiveTime',
+      meta: {isShowTabbar: false},
+      component: function (resolve) {
+        require(['../components/mine/messageSet/receiveTime/Index.vue'], resolve)
       },
     },
     // 关于
     {
       path: '/mine/about',
-      meta: { isShowTabbar: true },
+      meta: {isShowTabbar: false},
       component: function (resolve) {
         require(['../components/mine/about/Index.vue'], resolve)
       },
+    },
+    // 设置登录密码
+    {
+      path: '/mine/setPassword',
+      name: 'setPassword',
+      meta: {isShowTabbar: false},
+      component: function (resolve) {
+        require(['../components/login/setPassword/Index.vue'], resolve)
+      }
     },
     /********************* 登录 ************************/
     {
@@ -137,15 +172,7 @@ export default new Router({
         require(['../components/login/activateEm/Index.vue'], resolve)
       }
     },
-    // 设置登录密码
-    {
-      path: '/login/setPassword',
-      name: 'setPassword',
-      meta: { isShowTabbar: false },
-      component: function (resolve) {
-        require(['../components/login/setPassword/Index.vue'], resolve)
-      }
-    },
+
     /*{
       path: '/',
       component: function (resolve) {
@@ -157,6 +184,15 @@ export default new Router({
       meta: { isShowTabbar: false },
       component: function (resolve) {
         require(['../components/login/Index.vue'], resolve)
+      }
+    },
+    /********************* 消息 ************************/
+    {
+      path: '/purseStrings/message',
+      name: 'message',
+      meta: {isShowTabbar: false},
+      component: function (resolve) {
+        require(['../components/message/Index.vue'], resolve)
       }
     },
   ]

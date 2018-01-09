@@ -36,7 +36,7 @@
           :width="'80%'"
           class="mar-top_4"
         >
-          立即注册
+          立即激活
         </ky-button>
       </div>
     </div>
@@ -55,7 +55,8 @@
             <img src="../../../assets/logo.png" alt="" height="30" style="background-color: red;width: 100%;">
           </div>
           <div class="code-mask-footer mar-top_1">
-            <input type="text" placeholder="请输入验证码">
+            <input type="text" class="mint-field-core border padding_l_10 box-bb" placeholder="请输入验证码"
+                   v-model="verificationCode">
           </div>
         </div>
       </mt-popup>
@@ -66,6 +67,7 @@
 <script>
   import kyInput from '@/common/input/Input.vue'
   import kyButton from '@/common/button/Button.vue'
+  import {Toast} from 'mint-ui';
 
   export default {
     name: "index",
@@ -73,6 +75,7 @@
       return {
         phone: '',            // 手机号
         code: '',             // 验证码
+        verificationCode: '', // 验证码
         popupVisible: false,
         canClick: false,
         codeMsg: '获取验证码',
@@ -89,18 +92,32 @@
       },
       getCode(){
         var vm = this;
-        vm.canClick = true;
         vm.popupVisible = true;
-        this.timer = setInterval(function () {
-          vm.second --;
-          vm.codeMsg = '倒计时' + vm.second;
-          if (vm.second == 1){
-            vm.canClick = false;
-            vm.second = 60;
-            vm.codeMsg = '获取验证码';
-            clearInterval(vm.timer);
+      }
+    },
+    watch: {
+      verificationCode(newValue) {
+        var vm = this;
+        if (newValue.length == 6) {
+          if (newValue == '123456') {
+            Toast('验证成功');
+            vm.popupVisible = false;
+            vm.canClick = true;
+            this.timer = setInterval(function () {
+              vm.second--;
+              vm.codeMsg = '倒计时' + vm.second;
+              if (vm.second == 1) {
+                vm.canClick = false;
+                vm.second = 60;
+                vm.codeMsg = '获取验证码';
+                clearInterval(vm.timer);
+              }
+            }, 1000)
+          } else {
+            Toast('验证失败,请重新验证');
+            this.verificationCode = '';
           }
-        },1000)
+        }
       }
     },
     components: {

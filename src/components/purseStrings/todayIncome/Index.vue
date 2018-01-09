@@ -91,6 +91,9 @@
         } else if (value == 4) {
           this.popupTime = true;
         }
+      },
+      onValuesChange(){
+
       }
     }
   }
